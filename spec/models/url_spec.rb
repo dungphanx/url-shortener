@@ -22,7 +22,7 @@ RSpec.describe Url, type: :model do
     it 'returns a short URL string' do
       url = Url.new(id: 123)
 
-      expect(url.short_url).to eq('h7G')
+      expect(url.short_url).to eq('Dbal6')
     end
   end
 
@@ -34,7 +34,8 @@ RSpec.describe Url, type: :model do
     end
 
     it 'returns the Url object with the matching short URL' do
-      url = Url.create(original_url: 'http://example.com')
+      user = create(:user)
+      url = Url.create(original_url: 'http://example.com', user: user)
       short_url = url.short_url
 
       expect(Url.find_by_short_url(short_url)).to eq(url)

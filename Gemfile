@@ -53,6 +53,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'byebug'
   gem 'rspec-rails', '~> 6.0.0'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -66,6 +67,11 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+end
+
 
 gem "doorkeeper", "~> 5.6"
 gem 'simple_command'
+gem 'dotenv-rails'
