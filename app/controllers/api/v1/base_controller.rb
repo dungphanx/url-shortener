@@ -21,10 +21,10 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def doorkeeper_unauthorized_render_options(_error = nil)
-    { json: { erorr_message: "Unauthorized" } }
+    { json: { error_message: "Unauthorized" } }
   end
 
   def doorkeeper_forbidden_render_options(_error = nil)
-    { json: { erorr_message: "Forbidden" } }
+    { json: { error_message: "Forbidden" } }
   end
 end

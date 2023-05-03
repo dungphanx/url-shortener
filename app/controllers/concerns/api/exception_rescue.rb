@@ -2,20 +2,20 @@ module Api::ExceptionRescue
   extend ActiveSupport::Concern
 
   included do
-    rescue_from ActionController::ParameterMissing, with: :render400
-    rescue_from ActiveRecord::RecordInvalid, with: :render422
-    rescue_from ActiveRecord::RecordNotFound, with: :render404
+    rescue_from ActionController::ParameterMissing, with: :render_400
+    rescue_from ActiveRecord::RecordInvalid, with: :render_422
+    rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
-    def render400
-      render json: {erorr_message: "Bad request"}, status: :bad_request
+    def render_400
+      render json: { error_message: "Bad request" }, status: :bad_request
     end
 
-    def render404
-      render json: {erorr_message: "Resource not found"}, status: :not_found
+    def render_404
+      render json: { error_message: "Resource not found" }, status: :not_found
     end
 
-    def render422(exception)
-      render json: {erorr_message: exception.record.errors.full_messages}, status: :unprocessable_entity
+    def render_422(exception)
+      render json: { error_message: exception.record.errors.full_messages }, status: :unprocessable_entity
     end
   end
 end
