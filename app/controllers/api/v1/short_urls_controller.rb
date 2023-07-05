@@ -1,6 +1,6 @@
 class Api::V1::ShortUrlsController < Api::V1::BaseController
   def encode
-    url = current_user.urls.first_or_create!(original_url: params[:original_url])
+    url = current_user.urls.find_or_create_by(original_url: params.fetch(:original_url))
 
     render json: { short_url: base_url + url.short_url }
   end
